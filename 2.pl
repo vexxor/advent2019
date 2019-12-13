@@ -10,8 +10,6 @@ use Data::Dumper;
 my $input_file = substr($0,0,-3) . ".in";
 open (my $fh, '<', substr($0,0,-3) . ".in") or die "Couldn't open file: $!";
 
-# Perl should be able to handle these as strings just fine, but lets be cool
-# about it and turn them into ints
 my @ops = map {int($_)} split ",", <$fh>;
 my $pc = 0; #program counter
 
@@ -21,12 +19,12 @@ my $pc = 0; #program counter
 # just before the last computer caught fire. To do this, before running the
 # program, replace position 1 with the value 12 and replace position 2 with the
 # value 2. What value is left at position 0 after the program halts?
-
-$ops[0] = 12;
-$ops[1] = 2;
+$ops[1] = 12;
+$ops[2] = 2;
 
 while($pc < scalar(@ops)) {
     my ($op, $addr_1, $addr_2, $res_addr) = @ops[$pc .. $pc+4];
+
     if ($op == 99) {
         last;
     } elsif ($op == 1) {
