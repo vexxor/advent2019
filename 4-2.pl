@@ -21,7 +21,7 @@ sub check_num {
     # the last number ($end_range+1) is so we can catch the edge case where the
     # last digit matches the one before it.
     # By putting a number outside of the high side of the range, we always hit a
-    # digit change at the end and don't need to repeat step on ln:42 outside of the
+    # digit change at the end and don't need to repeat step on ln:40 outside of the
     # loop
     for((split "",$num),$end_range+1) {
         return 0 if $_ < $largest; # Bail immediately if found a lower number than before
